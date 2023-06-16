@@ -8,7 +8,7 @@ function ReviewPage({ gotoNewPage, rate, setRate }) {
     const { currentTarget } = event;
     const form = new FormData(currentTarget);
 
-    setRate(form.get("rate"));
+    setRate(Number(form.get("rate")));
     gotoNewPage(2);
   };
 
