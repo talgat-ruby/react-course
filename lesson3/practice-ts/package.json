@@ -6,9 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "start": "ts-node",
     "preview": "vite preview"
   },
   "devDependencies": {
+    "ts-node": "^10.9.1",
     "typescript": "^5.0.2",
     "vite": "^4.3.9"
   }
