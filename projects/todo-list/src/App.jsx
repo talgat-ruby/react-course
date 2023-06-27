@@ -4,9 +4,9 @@ import List from "../components/List/index.js";
 import "./App.css";
 
 const initialList = [
-  { text: "Todo 1", done: false },
-  { text: "Todo 2", done: true },
-  { text: "Todo 3", done: false },
+  { id: crypto.randomUUID(), text: "Todo 1", done: false },
+  { id: crypto.randomUUID(), text: "Todo 2", done: true },
+  { id: crypto.randomUUID(), text: "Todo 3", done: false },
 ];
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
   return (
     <>
       <Creator setTodos={setList} />
-      <List todos={list} />
+      <List todos={list} setTodos={setList} />
     </>
   );
 }

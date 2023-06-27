@@ -5,7 +5,10 @@ function Creator({ setTodos }) {
 
     const form = new FormData(event.currentTarget);
 
-    setTodos((list) => [{ text: form.get("text"), done: false }, ...list]);
+    setTodos((list) => [
+      { id: crypto.randomUUID(), text: form.get("text"), done: false },
+      ...list,
+    ]);
   };
 
   return (
