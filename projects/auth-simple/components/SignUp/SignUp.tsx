@@ -1,10 +1,9 @@
-import { Dispatch, FormEvent, SetStateAction } from "react";
+import { FormEvent } from "react";
+import { useNavigate } from "react-router-dom";
 
-type Props = {
-  setPage: Dispatch<SetStateAction<string>>;
-};
+const SignUp = () => {
+  const navigate = useNavigate();
 
-const SignUp = ({ setPage }: Props) => {
   const submitHandler = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const { currentTarget } = event;
@@ -16,7 +15,7 @@ const SignUp = ({ setPage }: Props) => {
   };
 
   const logInHandler = () => {
-    setPage("Login");
+    navigate("/sign-in");
   };
 
   return (

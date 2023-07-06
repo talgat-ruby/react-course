@@ -1,22 +1,36 @@
-import { Dispatch, FormEvent, SetStateAction } from "react";
+import { FormEvent } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-type Props = {
-  setPage: Dispatch<SetStateAction<string>>;
-};
+const SignIn = () => {
+  const navigate = useNavigate();
 
-const SignIn = ({ setPage }: Props) => {
-  const submitHandler = (event: FormEvent<HTMLFormElement>) => {
+  const submitHandler = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const { currentTarget } = event;
 
     const form = new FormData(currentTarget);
 
-    console.log(form.get("email"));
-    console.log(form.get("password"));
+    try {
+      const res = await fetch("http://localhost:8080/sign-in", {
+        method: "POST",
+        body: JSON.stringify({
+          email: form.get("email"),
+          password: form.get("password"),
+        }),
+      });
+
+      if (!res.ok) {
+        await Promise.reject(new Error(res.statusText));
+      }
+
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const signUpHandler = () => {
-    setPage("SignUp");
+    navigate("/sign-up");
   };
 
   return (
@@ -28,7 +42,7 @@ const SignIn = ({ setPage }: Props) => {
       <button type="button" onClick={signUpHandler}>
         Sign Up
       </button>
-      <a href="#">Forgot Password</a>
+      <Link to="/reset-password">Forgot Password</Link>
     </form>
   );
 };
