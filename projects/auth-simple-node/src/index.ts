@@ -18,13 +18,13 @@ app.use(cookieParser());
 app.locals.model = model;
 const port = process.env.PORT;
 
-app.get("/me", meHandler);
+app.get("/api/me", meHandler);
 
-app.post("/signin", signinHandler);
+app.post("/api/signin", signinHandler);
 
-app.post("/signup", signupHanlder);
+app.post("/api/signup", signupHanlder);
 
-app.post("/signout", signoutHanlder);
+app.post("/api/signout", signoutHanlder);
 
 app.listen(port, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${port}`);

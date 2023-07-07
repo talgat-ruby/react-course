@@ -11,7 +11,7 @@ const SignIn = () => {
     const form = new FormData(currentTarget);
 
     try {
-      const res = await fetch("http://localhost:8080/sign-in", {
+      const response = await fetch("http://localhost:8080/sign-in", {
         method: "POST",
         body: JSON.stringify({
           email: form.get("email"),
@@ -19,8 +19,8 @@ const SignIn = () => {
         }),
       });
 
-      if (!res.ok) {
-        await Promise.reject(new Error(res.statusText));
+      if (!response.ok) {
+        await Promise.reject(new Error(response.statusText));
       }
 
       navigate("/");

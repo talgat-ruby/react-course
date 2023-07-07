@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
 
 const handler = (req: Request, res: Response) => {
+  console.log("SIGN UP!");
+
   const { email, password } = req.body;
 
   res.app.locals.model.addUser(

@@ -4,14 +4,29 @@ import { useNavigate } from "react-router-dom";
 const SignUp = () => {
   const navigate = useNavigate();
 
-  const submitHandler = (event: FormEvent<HTMLFormElement>) => {
+  const submitHandler = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const { currentTarget } = event;
 
     const form = new FormData(currentTarget);
 
-    console.log(form.get("email"));
-    console.log(form.get("password"));
+    try {
+      const response = await fetch("api/signup", {
+        method: "POST",
+        body: JSON.stringify({
+          email: form.get("email"),
+          password: form.get("password"),
+        }),
+      });
+
+      if (!response.ok) {
+        await Promise.reject(new Error(response.statusText));
+      }
+
+      navigate("/sign-in");
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const logInHandler = () => {
