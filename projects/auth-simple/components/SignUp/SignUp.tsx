@@ -13,6 +13,10 @@ const SignUp = () => {
     try {
       const response = await fetch("api/signup", {
         method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
           email: form.get("email"),
           password: form.get("password"),

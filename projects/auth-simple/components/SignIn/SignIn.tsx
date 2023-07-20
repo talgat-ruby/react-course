@@ -11,8 +11,12 @@ const SignIn = () => {
     const form = new FormData(currentTarget);
 
     try {
-      const response = await fetch("http://localhost:8080/sign-in", {
+      const response = await fetch("api/signin", {
         method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
           email: form.get("email"),
           password: form.get("password"),

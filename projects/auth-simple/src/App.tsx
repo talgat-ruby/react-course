@@ -5,7 +5,7 @@ import SignIn from "../components/SignIn";
 import SignUp from "../components/SignUp";
 import ResetPassword from "../components/ResetPassword";
 
-// fetch http://localhost:8080/me - useEffect
+// fetch http://localhost:8080/api/me - useEffect
 
 function App() {
   return (
