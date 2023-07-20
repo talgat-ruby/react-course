@@ -12,7 +12,7 @@ export type ListBody = {
 
 async function fetchPokemons() {
   try {
-    const response1 = await fetch("api/v2/pokemon", {
+    const response1 = await fetch("/api/v2/pokemon", {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -27,7 +27,7 @@ async function fetchPokemons() {
 
     const response2 = await Promise.all(
       json1.results.map(({ name }) =>
-        fetch(`api/v2/pokemon/${name}`, {
+        fetch(`/api/v2/pokemon/${name}`, {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
