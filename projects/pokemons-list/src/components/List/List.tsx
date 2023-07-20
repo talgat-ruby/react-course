@@ -9,8 +9,8 @@ const List = () => {
       <h2>List</h2>
       <ul>
         {pokemonsData.results.map((pokemon) => (
-          <Link to={`/pokemons/${pokemon.id}`}>
-            <li key={pokemon.id}>
+          <Link key={pokemon.id} to={`/pokemons/${pokemon.id}`}>
+            <li>
               <article>
                 <header>
                   <h3>{pokemon.name}</h3>

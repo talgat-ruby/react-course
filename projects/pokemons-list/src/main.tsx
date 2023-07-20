@@ -6,6 +6,7 @@ import "./index.css";
 import List from "./components/List";
 import Item from "./components/Item";
 import loaderPokemons from "./loaders/pokemons-list.ts";
+import loaderPokemon from "./loaders/pokemons-item.ts";
 
 const router = createBrowserRouter([
   {
@@ -13,7 +14,7 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { path: "pokemons", element: <List />, loader: loaderPokemons },
-      { path: "pokemons/:pokemonId", element: <Item /> },
+      { path: "pokemons/:pokemonId", element: <Item />, loader: loaderPokemon },
     ],
   },
 ]);
